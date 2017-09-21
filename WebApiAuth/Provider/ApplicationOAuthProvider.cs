@@ -29,7 +29,6 @@ namespace WebApiAuth.Provider
             {
                 context.SetError("Invalid Grant", "Either Username and password is incorrect");
                 return;
-
             }
             ClaimsIdentity oAuthIdentity = new ClaimsIdentity(context.Options.AuthenticationType);
             oAuthIdentity.AddClaim(new Claim(ClaimTypes.Role, "Admin"));
