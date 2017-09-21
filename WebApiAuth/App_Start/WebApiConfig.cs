@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.ExceptionHandling;
+using WebApiAuth.Filter;
 
 namespace WebApiAuth
 {
@@ -13,6 +15,9 @@ namespace WebApiAuth
             // Web API configuration and services
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
+
+            config.Services.Replace(typeof(IExceptionHandler), new GlobalExceptionHandler());
+
             // Web API routes
             config.MapHttpAttributeRoutes();
 
